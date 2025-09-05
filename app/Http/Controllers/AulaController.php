@@ -3,50 +3,75 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aula;
+use App\Models\Mueble; // <-- Probablemente esta es la línea que faltaba
 use Illuminate\Http\Request;
 
 class AulaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra una lista de todas las aulas.
      */
     public function index()
     {
         $aulas = Aula::all();
-        return view('aulas.index', ['aulas' => $aulas]);
+        return view('aulas.index', compact('aulas'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear una nueva aula.
      */
     public function create()
     {
-        // Simplemente muestra la vista con el formulario
         return view('aulas.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guarda una nueva aula en la base de datos.
      */
     public function store(Request $request)
     {
-        // 1. Validar los datos del formulario
-        $request->validate([
+        $validatedData = $request->validate([
             'nombre' => 'required|string|max:255|unique:aulas,nombre',
             'ubicacion' => 'required|string|max:255',
             'capacidad' => 'required|integer|min:1',
         ]);
-
-        // 2. Crear la nueva aula en la base de datos
-        Aula::create([
-            'nombre' => $request->nombre,
-            'ubicacion' => $request->ubicacion,
-            'capacidad' => $request->capacidad,
-        ]);
-
-        // 3. Redirigir a la lista de aulas con un mensaje de éxito
+        Aula::create($validatedData);
         return redirect()->route('aulas.index')->with('success', 'Aula creada exitosamente.');
     }
 
-    // ... aquí van los otros métodos (show, edit, update, destroy)
+    /**
+     * Muestra la página de detalles y gestión de inventario de un aula.
+     * ESTE ES EL NUEVO MÉTODO
+   
+
+
+     * Muestra el formulario para editar un aula existente.
+     */
+    public function edit(Aula $aula)
+    {
+        return view('aulas.edit', compact('aula'));
+    }
+
+    /**
+     * Actualiza un aula existente en la base de datos.
+     */
+    public function update(Request $request, Aula $aula)
+    {
+        $validatedData = $request->validate([
+            'nombre' => 'required|string|max:255|unique:aulas,nombre,' . $aula->id,
+            'ubicacion' => 'required|string|max:255',
+            'capacidad' => 'required|integer|min:1',
+        ]);
+        $aula->update($validatedData);
+        return redirect()->route('aulas.index')->with('success', 'Aula actualizada exitosamente.');
+    }
+
+    /**
+     * Elimina un aula de la base de datos.
+     */
+    public function destroy(Aula $aula)
+    {
+        $aula->delete();
+        return redirect()->route('aulas.index')->with('success', 'Aula eliminada exitosamente.');
+    }
 }

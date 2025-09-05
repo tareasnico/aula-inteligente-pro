@@ -15,6 +15,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                //poppins: ['Poppins', 'sans-serif']
+                cinzel: ['Cinzel', 'serif']
             },
             colors: { // Aquí definimos nuestros nuevos colores
                 'primary-red': '#EF4444', // Rojo vibrante

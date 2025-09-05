@@ -13,36 +13,12 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        {{-- Fondo con gradiente multicolor --}}
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gradient-to-br from-primary-red via-secondary-green to-info-blue dark:from-dark-blue-bg dark:via-gray-900 dark:to-gray-800 animate-gradient-xy">
+        {{-- Nuevo fondo con gradiente suave de azul a celeste --}}
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gradient-to-br from-gray-900 via-blue-900 to-sky-800">
 
-            {{-- Logo principal --}}
-            <div class="mb-4">
-                <a href="/">
-                    <x-application-logo class="w-28 h-28 fill-current text-white drop-shadow-md" />
-                </a>
-            </div>
-
-            {{-- Tarjeta/Contenedor del formulario con más estilo --}}
-            <div class="w-full sm:max-w-md mt-6 px-8 py-6 bg-dark-gray-card shadow-2xl overflow-hidden sm:rounded-2xl border border-gray-700 backdrop-blur-sm bg-opacity-80">
+            <div class="w-full sm:max-w-md mt-6 px-6 py-4 overflow-hidden">
                 {{ $slot }}
             </div>
         </div>
-
-        {{-- Animación de gradiente (añadir al final del body si no está en app.css) --}}
-        <style>
-            @keyframes gradient-xy {
-                0%, 100% {
-                    background-position: 0% 0%;
-                }
-                50% {
-                    background-position: 100% 100%;
-                }
-            }
-            .animate-gradient-xy {
-                background-size: 400% 400%;
-                animation: gradient-xy 15s ease infinite;
-            }
-        </style>
     </body>
 </html>
