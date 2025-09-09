@@ -8,6 +8,8 @@ use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\MuebleController;
+use App\Http\Controllers\FocoController;
+use App\Http\Controllers\AireAcondicionadoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,6 +27,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('horarios', HorarioController::class);
     Route::resource('reservas', ReservaController::class);
     Route::resource('muebles', MuebleController::class);
+    Route::resource('focos', FocoController::class);
+    Route::resource('aires', AireAcondicionadoController::class)->parameters(['aires' => 'aire']);
         
     // Rutas del perfil de usuario que instala Breeze
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

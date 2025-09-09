@@ -36,7 +36,13 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('muebles.index')" :active="request()->routeIs('muebles.*')" class="text-gray-300 hover:bg-gray-700 hover:text-white">
                 {{ __('Mobiliario') }}
+            <x-responsive-nav-link :href="route('focos.index')" :active="request()->routeIs('focos.*')" class="text-gray-300 hover:bg-gray-700 hover:text-white">
+                 {{ __('Focos') }}
+            </x-responsive-nav-link>    
+            <x-responsive-nav-link :href="route('aires.index')" :active="request()->routeIs('aires.*')" class="text-gray-300 hover:bg-gray-700 hover:text-white">
+                {{ __('A/A') }}
             </x-responsive-nav-link>
+
         </nav>
     </div>
 </div>
