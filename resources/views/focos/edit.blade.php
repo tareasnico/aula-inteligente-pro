@@ -1,16 +1,12 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">{{ __('Editar Foco') }}</h2>
-    </x-slot>
+    {{-- Se eliminó el x-slot name="header" --}}
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
-                {{-- La acción apunta a 'update' y pasa el objeto $foco --}}
+            <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg p-6 border border-gray-200">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Editar Foco</h3>
                 <form action="{{ route('focos.update', $foco) }}" method="POST">
                     @csrf
-                    {{-- Es necesario especificar que es un método PUT para actualizar --}}
                     @method('PUT')
-                    {{-- Incluimos el formulario parcial --}}
                     @include('focos._form')
                 </form>
             </div>

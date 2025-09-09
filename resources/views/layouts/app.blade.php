@@ -13,7 +13,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-100 dark:bg-gray-900">
+        <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-100">
             <div x-show="sidebarOpen" @click.away="sidebarOpen = false" class="fixed inset-0 z-20 bg-black opacity-50 transition-opacity lg:hidden" x-cloak></div>
             <div x-show="sidebarOpen" class="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto bg-gray-800 lg:hidden" x-cloak>
                 @include('layouts.sidebar')

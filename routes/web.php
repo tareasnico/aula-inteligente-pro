@@ -10,17 +10,16 @@ use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\MuebleController;
 use App\Http\Controllers\FocoController;
 use App\Http\Controllers\AireAcondicionadoController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     // RUTAS PROTEGIDAS
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
     Route::resource('aulas', AulaController::class);
     Route::resource('docentes', DocenteController::class);
     Route::resource('materias', MateriaController::class);

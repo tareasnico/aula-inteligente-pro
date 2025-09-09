@@ -1,10 +1,9 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">{{ __('Añadir Equipo de A/A') }}</h2>
-    </x-slot>
+    {{-- Se eliminó el x-slot name="header" --}}
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-slate-800/70 backdrop-blur-sm overflow-hidden shadow-lg sm:rounded-lg p-6 border border-slate-700">
+            <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg p-6 border border-gray-200">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Añadir Nuevo Equipo de A/A</h3>
                 <form action="{{ route('aires.store') }}" method="POST">
                     @csrf
                     @include('aires._form')
