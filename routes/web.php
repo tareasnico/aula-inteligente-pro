@@ -35,8 +35,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::post('/api/focos/control/{foco}', [FocoController::class, 'updateControl']);
-    Route::get('/api/focos/estado', [FocoController::class, 'getEstado']);
 });
 
 require __DIR__.'/auth.php';
