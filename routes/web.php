@@ -27,12 +27,16 @@ Route::middleware('auth')->group(function () {
     Route::resource('reservas', ReservaController::class);
     Route::resource('muebles', MuebleController::class);
     Route::resource('focos', FocoController::class);
+    Route::get('/control-focos', [FocoController::class, 'showControlPage'])->name('focos.control');
     Route::resource('aires', AireAcondicionadoController::class)->parameters(['aires' => 'aire']);
         
     // Rutas del perfil de usuario que instala Breeze
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::post('/api/focos/control/{foco}', [FocoController::class, 'updateControl']);
+    Route::get('/api/focos/estado', [FocoController::class, 'getEstado']);
 });
 
 require __DIR__.'/auth.php';

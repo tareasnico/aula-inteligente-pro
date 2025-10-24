@@ -40,6 +40,9 @@
 <x-responsive-nav-link :href="route('focos.index')" :active="request()->routeIs('focos.*')" class="text-blue-100 hover:bg-blue-700 hover:text-white">
     {{ __('Focos') }}
 </x-responsive-nav-link>
+<x-responsive-nav-link :href="route('focos.control')" :active="request()->routeIs('focos.control')" class="text-blue-100 hover:bg-blue-700 hover:text-white">
+    {{ __('Control Focos') }}
+</x-responsive-nav-link>
 <x-responsive-nav-link :href="route('aires.index')" :active="request()->routeIs('aires.*')" class="text-blue-100 hover:bg-blue-700 hover:text-white">
     A/A
 </x-responsive-nav-link>

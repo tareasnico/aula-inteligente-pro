@@ -15,6 +15,12 @@ class Foco extends Model
         'tipo',
         'intensidad',
         'aula_id',
+        'estado',
+    ];
+
+    protected $casts = [
+        'estado' => 'boolean',
+        'intensidad' => 'integer',
     ];
 
     /**
